@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grand Gorge New York – Gateway to the Northern Catskills</title>
+  <meta name="description" content="Community portal for Grand Gorge, NY (12434) – History, Local Business Directory, GGCAG, Ulster & Delaware Railroad, and Town Information." />
+  <style>
+    :root {
+      --bg-body: #f4f5f7;
+      --bg-surface: #ffffff;
+      --bg-nav: #1e3f2b;
+      --bg-nav-hover: #2d5a3f;
+      --bg-accent-soft: #eef4f0;
+      --text-main: #222222;
+      --text-muted: #555555;
+      --text-light: #ffffff;
+      --border-color: #e2e5e9;
+      --brand-green: #1e4d2b;
+      --brand-gold: #b8860b;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    a {
+      color: var(--brand-green);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Archive Banner */
+    .archive-notice {
+      background: #2b2d30;
+      color: #e5e7eb;
+      font-size: 0.82rem;
+      padding: 8px 16px;
+      text-align: center;
+      border-bottom: 2px solid var(--brand-gold);
+    }
+
+    .archive-notice span {
+      color: #facc15;
+      font-weight: 600;
+    }
+
+    /* Site Header (GeneratePress Classic Civic Style) */
+    .site-header {
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 28px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .site-branding h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brand-green);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .site-branding p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    .header-badge {
+      background: var(--bg-accent-soft);
+      border: 1px solid #cfe0d4;
+      color: var(--brand-green);
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    /* Primary Navigation */
+    .main-navigation {
+      background-color: var(--bg-nav);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 12px;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px 12px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu li button {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 500;
+      padding: 14px 14px;
+      cursor: pointer;
+      display: block;
+      transition: background-color 0.15s ease;
+    }
+
+    .nav-menu li button:hover,
+    .nav-menu li button.active {
+      background-color: var(--bg-nav-hover);
+      box-shadow: inset 0 -3px 0 #8fd19e;
+    }
+
+    /* Hero Scenic Banner */
+    .scenic-banner {
+      background: linear-gradient(135deg, #1b3b28 0%, #2e5d40 55%, #477858 100%);
+      color: #ffffff;
+      padding: 36px 20px;
+      border-bottom: 4px solid var(--brand-gold);
+    }
+
+    .scenic-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .scenic-inner h2 {
+      font-size: 1.75rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .scenic-inner p {
+      max-width: 780px;
+      color: #e6f0ea;
+      font-size: 1.02rem;
+    }
+
+    /* Main Content + Sidebar Grid */
+    .site-container {
+      max-width: 1140px;
+      margin: 28px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .content-area {
+      background: var(--bg-surface);
+      padding: 32px;
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .page-section {
+      display: none;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    .entry-title {
+      font-size: 1.85rem;
+      color: var(--brand-green);
+      border-bottom: 2px solid var(--bg-accent-soft);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    .content-area h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    .content-area p {
+      margin-bottom: 16px;
+    }
+
+    .content-area ul {
+      margin: 0 0 18px 22px;
+    }
+
+    .content-area li {
+      margin-bottom: 8px;
+    }
+
+    .callout-box {
+      background: var(--bg-accent-soft);
+      border-left: 4px solid var(--brand-green);
+      padding: 16px 20px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .callout-box strong {
+      color: var(--brand-green);
+    }
+
+    /* Business Directory Styling */
+    .directory-controls {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .directory-search {
+      flex: 1;
+      min-width: 240px;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    .biz-category {
+      margin-top: 24px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .biz-category-header {
+      background: var(--bg-nav);
+      color: #ffffff;
+      padding: 10px 16px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .biz-item {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .biz-item:last-child {
+      border-bottom: none;
+    }
+
+    .biz-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--brand-green);
+    }
+
+    .biz-meta {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Cards */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .info-card {
+      border: 1px solid var(--border-color);
+      background: #fafbfc;
+      padding: 18px;
+      border-radius: 4px;
+    }
+
+    .info-card h4 {
+      color: var(--brand-green);
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    /* Sidebar Widgets */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .widget {
+      background: var(--bg-surface);
+      padding: 22px;
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .widget-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brand-green);
+      border-bottom: 2px solid var(--bg-accent-soft);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .widget ul {
+      list-style: none;
+    }
+
+    .widget ul li {
+      padding: 7px 0;
+      border-bottom: 1px solid #f0f2f4;
+      font-size: 0.92rem;
+    }
+
+    .widget ul li:last-child {
+      border-bottom: none;
+    }
+
+    .download-btn {
+      display: inline-block;
+      width: 100%;
+      background: var(--brand-green);
+      color: #ffffff;
+      border: none;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.15s ease;
+    }
+
+    .download-btn:hover {
+      background: #14361e;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #22252a;
+      color: #cfd4da;
+      font-size: 0.9rem;
+      padding: 24px 20px;
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .site-footer a {
+      color: #9ae6b4;
+    }
+
+    @media (max-width: 860px) {
+      .site-container {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+      }
+
+      .nav-menu.open {
+        display: flex;
+      }
+
+      .nav-menu li button {
+        width: 100%;
+        text-align: left;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="archive-notice">
+    <span></span> ### Website Under Construction ### <code></code>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-branding">
+        <h1>Grand Gorge New York</h1>
+        <p>The Historic Crossroads of the Northern Catskills • Town of Roxbury, Delaware County, NY 12434</p>
+      </div>
+      <div class="header-badge">
+        Routes 23 &amp; 30 • Elevation 1,410 ft
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-navigation" aria-label="Primary Menu">
+    <div class="nav-inner">
+      <button class="nav-toggle" id="mobileMenuBtn" aria-expanded="false">☰ Menu</button>
+      <ul class="nav-menu" id="primaryMenu">
+        <li><button class="active" data-page="home">Home</button></li>
+        <li><button data-page="business">Business</button></li>
+        <li><button data-page="ggcag">GGCAG</button></li>
+        <li><button data-page="history">History</button></li>
+        <li><button data-page="crossroads">The Crossroads</button></li>
+        <li><button data-page="churches">Churches</button></li>
+        <li><button data-page="railroad">Ulster and Delaware RR</button></li>
+        <li><button data-page="around-town">Around Town</button></li>
+        <li><button data-page="john-more">John More</button></li>
+        <li><button data-page="yesterday-today">Yesterday to Today</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="scenic-banner">
+    <div class="scenic-inner">
+      <h2>Welcome to Grand Gorge, New York</h2>
+      <p>Nestled in the northern Catskill Mountains at the intersection of State Routes 23 and 30, Grand Gorge blends over two centuries of pioneer heritage, railroad history, and small-town mountain hospitality.</p>
+    </div>
+  </section>
+
+  <div class="site-container">
+    <main class="content-area">
+
+      <!-- 1. HOME -->
+      <article id="page-home" class="page-section active">
+        <h2 class="entry-title">Welcome to Grand Gorge</h2>
+        <p>Located in the northeastern corner of Delaware County within the Town of Roxbury, <strong>Grand Gorge, New York (ZIP 12434)</strong> sits at a natural mountain pass where the East Branch of the Delaware River watershed meets the Schoharie Valley.</p>
+        <p>Known for generations as <em>"The Crossroads of the Northern Catskills,"</em> Grand Gorge greets travelers arriving along State Route 23 and State Route 30 with classic wooden welcome signs, seasonal Main Street flower boxes, and immediate access to four-season outdoor recreation.</p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h4>Local Businesses</h4>
+            <p>Explore auto service centers, family dining, country stores, lodging, banking, and equestrian farms serving residents and visitors.</p>
+            <p><a href="#business" onclick="navigateTo('business'); return false;">View Business Directory →</a></p>
+          </div>
+          <div class="info-card">
+            <h4>Community Action (GGCAG)</h4>
+            <p>Learn how the Grand Gorge Community Action Group beautifies Main Street with flower boxes, holiday wreaths, and civic improvements.</p>
+            <p><a href="#ggcag" onclick="navigateTo('ggcag'); return false;">Explore GGCAG Projects →</a></p>
+          </div>
+          <div class="info-card">
+            <h4>Pioneer &amp; Rail Heritage</h4>
+            <p>Trace the story of 1786 settler John More, the Susquehannah Turnpike, and the Ulster &amp; Delaware Railroad depot.</p>
+            <p><a href="#history" onclick="navigateTo('history'); return false;">Read Local History →</a></p>
+          </div>
+        </div>
+
+        <div class="callout-box">
+          <strong>Community Gathering Spot:</strong> The <strong>Grand Gorge Civic Center</strong> on Route 30 hosts community programs, senior dining lunches, and local events throughout the year.
+        </div>
+      </article>
+
+      <!-- 2. BUSINESS DIRECTORY -->
+      <article id="page-business" class="page-section">
+        <h2 class="entry-title">Business Directory</h2>
+        <p>Support the local shops, tradespeople, restaurants, and service providers that keep Grand Gorge thriving.</p>
+
+        <div class="directory-controls">
+          <input type="text" id="bizFilter" class="directory-search" placeholder="Filter businesses by name, category, or street..." onkeyup="filterBusinesses()" />
+        </div>
+
+        <div id="businessList">
+          <div class="biz-category">
+            <div class="biz-category-header">Auto Care &amp; Service</div>
+            <div class="biz-item">
+              <div class="biz-name">Grand Gorge Tire</div>
+              <div class="biz-meta">35487 State Highway 23, Grand Gorge, NY 12434 • Tel: (607) 588-4100 • facebook.com/ggtire</div>
+            </div>
+            <div class="biz-item">
+              <div class="biz-name">M C Auto Services</div>
+              <div class="biz-meta">60791 Depot St – State Rt. 30 S, Grand Gorge, NY 12434 • Tel: (607) 588-9441</div>
+            </div>
+            <div class="biz-item">
+              <div class="biz-name">W. S. Hinkley &amp; Sons</div>
+              <div class="biz-meta">Route 30 North, Grand Gorge, NY 12434 • Tel: (607) 588-7522</div>
+            </div>
+          </div>
+
+          <div class="biz-category">
+            <div class="biz-category-header">Banking</div>
+            <div class="biz-item">
+              <div class="biz-name">NBT Bank</div>
+              <div class="biz-meta">Corner of Routes 23 &amp; 30, Grand Gorge, NY 12434 • Tel: (607) 588-7513</div>
+            </div>
+          </div>
+
+          <div class="biz-category">
+            <div class="biz-category-header">Contractors / Electricians</div>
+            <div class="biz-item">
+              <div class="biz-name">Resch Electric (Licensed and Insured)</div>
+              <div class="biz-meta">P.O. Box 493, Grand Gorge, NY 12434 • Office: (607) 588-6804 • Email: reschelectric@gmail.com</div>
+            </div>
+          </div>
+
+          <div class="biz-category">
+            <div class="biz-category-header">Convenience Stores</div>
+            <div class="biz-item">
+              <div class="biz-name">Grand Gorge Country Store</div>
+              <div class="biz-meta">Corner of Routes 23 and 30, Grand Gorge, NY 12434 • Tel: (607) 588-6540</div>
+            </div>
+          </div>
+
+          <div class="biz-category">
+            <div class="biz-category-header">Food &amp; Dining</div>
+            <div class="biz-item">
+              <div class="biz-name">Sundaes Restaurant and Tasty Freeze</div>
+              <div class="biz-meta">36422 Rt. 23, Grand Gorge, NY 12434 • Tel: (607) 588-8808 • facebook.com/SundaesRestaurant</div>
+            </div>
+            <div class="biz-item">
+              <div class="biz-name">Pizza Plus</div>
+              <div class="biz-meta">Grand Gorge, NY 12434 • Tel: (607) 588-4070 • pizzaplusgg.com</div>
+            </div>
+          </div>
+
+          <div class="biz-category">
+            <div class="biz-category-header">Horses, Mini-Horses &amp; Veterinary Care</div>
+            <div class="biz-item">
+              <div class="biz-name">Grand Gorge Animal Hospital</div>
+              <div class="biz-meta">34952 State Highway 23, Grand Gorge, NY 12434 • Tel: (607) 588-7011</div>
+            </div>
+            <div class="biz-item">
+              <div class="biz-name">Night Pasture Horse Farms</div>
+              <div class="biz-meta">Lessons, Training, Boarding &amp; Summer Camp • Rt. 23 (immediately east of Grand Gorge Animal Hospital), Grand Gorge, NY 12434 • Tel: (607) 588-6926 • Email: karinleehouseholder@catskill.net</div>
+            </div>
+            <div class="biz-item">
+              <div class="biz-name">Mountain Breeze Minis</div>
+              <div class="biz-meta">Grand Gorge, NY 12434 • Tel: (607) 588-6208 • minibreeders.com/mountainbreezeminis</div>
+            </div>
+          </div>
+
+          <div class="biz-category">
+            <div class="biz-category-header">Lodging</div>
+            <div class="biz-item">
+              <div class="biz-name">The Colonial Motel</div>
+              <div class="biz-meta">37283 Lower Main Street (State Route 23), Grand Gorge, NY 12434 • Tel: (607) 588-6122 • Email: info@colonialmotel.biz</div>
+            </div>
+          </div>
+
+          <div class="biz-category">
+            <div class="biz-category-header">Senior Services</div>
+            <div class="biz-item">
+              <div class="biz-name">Grand Gorge Senior Dining Center</div>
+              <div class="biz-meta">Route 30 (Located in the Grand Gorge Civic Center), Grand Gorge, NY 12434 • Tel: (607) 588-6166 • Lunch served at 11:30 AM (Seniors: $3.00 / Non-Seniors: $4.00)</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. GGCAG -->
+      <article id="page-ggcag" class="page-section">
+        <h2 class="entry-title">GGCAG – Grand Gorge Community Action Group</h2>
+        <p>The <strong>Grand Gorge Community Action Group (GGCAG)</strong> was formed by dedicated Grand Gorge residents and has been responsible for initiating numerous projects that have greatly enhanced the appearance, civic pride, and welcoming spirit of the community.</p>
+
+        <h3>Signature Community Projects</h3>
+        <ul>
+          <li><strong>Main Street Flower Boxes:</strong> Hand-planted seasonal flower boxes placed along Main Street through the spring and summer months.</li>
+          <li><strong>Holiday Wreaths &amp; Lighting:</strong> Lighted Christmas wreaths mounted along the streetscape during the winter holiday season.</li>
+          <li><strong>"Welcome to Grand Gorge" Gateway Signs:</strong> Custom roadside welcome signs acquired and installed at the entrances to Grand Gorge to greet residents and travelers.</li>
+          <li><strong>Civic Pride &amp; Beautification:</strong> Ongoing volunteer upkeep of public planters, seasonal banners, and community gathering spaces.</li>
+        </ul>
+
+        <div class="callout-box">
+          <strong>Get Involved:</strong> Community volunteers and local donors make GGCAG's year-round beautification efforts possible. Watch local bulletin boards at the Post Office and Civic Center for seasonal planting and decorating dates.
+        </div>
+      </article>
+
+      <!-- 4. HISTORY -->
+      <article id="page-history" class="page-section">
+        <h2 class="entry-title">History of Grand Gorge</h2>
+        <p>Originally known in early settlement days as <strong>Moresville</strong> in honor of pioneer settler John More, the community later took the name <strong>Grand Gorge</strong>—inspired by the dramatic rocky gorge carved through the surrounding Catskill peaks where mountain passes converge.</p>
+
+        <h3>Key Milestones in Grand Gorge History</h3>
+        <ul>
+          <li><strong>1786 – First Permanent Settlement:</strong> John More and his family settled in the valley, establishing early farms and civic foundations.</li>
+          <li><strong>Early 1800s – The Susquehannah Turnpike:</strong> An important east–west private toll road (today's NYS Route 23) linked the Hudson River at Catskill with the Susquehanna Valley, turning the hamlet into a vital stagecoach and drover stop.</li>
+          <li><strong>1870s – Arrival of the Railroad:</strong> Construction of the Ulster &amp; Delaware Railroad connected Grand Gorge directly to Kingston and Oneonta, sparking growth in dairy shipping, hotels, and boarding houses.</li>
+          <li><strong>1926 – Schoharie Reservoir:</strong> Just north of the hamlet along Route 30, New York City completed the Gilboa Dam and Schoharie Reservoir, reshaping the surrounding valley landscape.</li>
+          <li><strong>1930–1980 – Grand Gorge Central School:</strong> Operated for 50 years, graduating more than 700 students whose alumni association continues to preserve local school heritage.</li>
+        </ul>
+      </article>
+
+      <!-- 5. THE CROSSROADS -->
+      <article id="page-crossroads" class="page-section">
+        <h2 class="entry-title">The Crossroads</h2>
+        <p>For more than two centuries, Grand Gorge's identity has been shaped by geography. Sitting squarely at the junction of <strong>State Route 23</strong> (east–west) and <strong>State Route 30</strong> (north–south), the hamlet has always been a natural meeting point for travelers crossing the northern Catskills.</p>
+        <p>Whether heading west toward Stamford and Oneonta, east toward Windham and the Hudson Valley, north toward Gilboa and the Schoharie Valley, or south toward Roxbury and Margaretville, all roads pass through the heart of Grand Gorge.</p>
+        <div class="callout-box">
+          <strong>Four Directions from Main Street:</strong><br />
+          • <strong>East (Rt. 23):</strong> Prattsville, Windham, Catskill &amp; Hudson Valley<br />
+          • <strong>West (Rt. 23):</strong> Stamford, Harpersfield &amp; Oneonta<br />
+          • <strong>North (Rt. 30):</strong> Schoharie Reservoir, Gilboa &amp; Middleburgh<br />
+          • <strong>South (Rt. 30):</strong> Roxbury, Arkville &amp; Margaretville
+        </div>
+      </article>
+
+      <!-- 6. CHURCHES -->
+      <article id="page-churches" class="page-section">
+        <h2 class="entry-title">Churches of Grand Gorge</h2>
+        <p>From the earliest frontier prayer meetings held in pioneer cabins to the historic steeples along Main Street, local congregations have long anchored community life in Grand Gorge.</p>
+        <ul>
+          <li><strong>Grand Gorge United Methodist Church:</strong> Located right in the village center on Main Street, serving generations of local families with Sunday worship, community suppers, and outreach.</li>
+          <li><strong>St. Philip Neri / Sacred Heart Parish:</strong> Serving Catholic residents and seasonal Catskill visitors in the Grand Gorge and Roxbury corridor.</li>
+          <li><strong>Reformed &amp; Community Heritage:</strong> Early settlers from the Hudson Valley and New England established strong Reformed and Baptist congregations that helped shape the civic character of the Town of Roxbury.</li>
+        </ul>
+      </article>
+
+      <!-- 7. ULSTER AND DELAWARE RR -->
+      <article id="page-railroad" class="page-section">
+        <h2 class="entry-title">Ulster and Delaware Railroad (U&amp;D)</h2>
+        <p>The arrival of the <strong>Ulster and Delaware Railroad</strong> transformed Grand Gorge from a quiet turnpike village into a bustling Catskill Mountain hub. Running from Kingston Point on the Hudson River through the high peaks to Oneonta, the U&amp;D line curved directly into Grand Gorge.</p>
+
+        <h3>Life Along the Tracks</h3>
+        <ul>
+          <li><strong>Grand Gorge Depot:</strong> Located off Depot Street (Route 30 South), the station handled daily passenger trains, mail pouches, freight, and express packages.</li>
+          <li><strong>Dairy &amp; Creamery Trains:</strong> Local dairy farms brought cans of fresh milk to the Grand Gorge creamery each morning for fast refrigerated rail transport to New York City markets.</li>
+          <li><strong>Summer Boarding Era:</strong> City families stepped off the U&amp;D coaches at Grand Gorge to stay at local hotels, mountain boarding houses, and farm resorts.</li>
+        </ul>
+      </article>
+
+      <!-- 8. AROUND TOWN -->
+      <article id="page-around-town" class="page-section">
+        <h2 class="entry-title">Around Town</h2>
+        <p>A stroll through Grand Gorge reveals classic Catskill architecture, working farms, and scenic overlooks just minutes from Main Street.</p>
+        <div class="info-grid">
+          <div class="info-card">
+            <h4>Grand Gorge Civic Center</h4>
+            <p>Located on Route 30, serving as the community's hub for senior lunches, town meetings, indoor recreation, and seasonal gatherings.</p>
+          </div>
+          <div class="info-card">
+            <h4>Grand Gorge Fire District</h4>
+            <p>Established in 1897, the dedicated volunteer fire department and emergency responders protect Grand Gorge and neighboring mountain roads.</p>
+          </div>
+          <div class="info-card">
+            <h4>Bearpen Mountain &amp; Catskill Peaks</h4>
+            <p>Towering above the hamlet to the east, Bearpen Mountain and nearby state lands offer hiking, snowshoeing, and panoramic views.</p>
+          </div>
+          <div class="info-card">
+            <h4>Schoharie Reservoir &amp; Gilboa Overlook</h4>
+            <p>Just north along Route 30, visitors can view the historic dam, reservoir waters, and fossil forest exhibits.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- 9. JOHN MORE -->
+      <article id="page-john-more" class="page-section">
+        <h2 class="entry-title">John More – First Settler of Grand Gorge</h2>
+        <p>In <strong>1786</strong>, <strong>John More</strong> and his family became the first permanent settlers in Grand Gorge, though their journey to the northern Catskills had begun 13 years earlier.</p>
+        <p>In the spring of <strong>1773</strong>, John, his wife <strong>Betty (Taylor) More</strong>, and their two young sons, <strong>John T.</strong> and <strong>Robert</strong>, traveled from New York City up the Hudson Valley to Catskill and overland to Harpersfield. After enduring the hardships of the Revolutionary War frontier and waiting out the winter, the More family settled permanently in the valley that initially bore their name: <em>Moresville</em>.</p>
+        <div class="callout-box">
+          <strong>The John More Association:</strong> Founded by descendants of John and Betty More, the association holds regular reunions in the Roxbury and Grand Gorge area, preserving one of the Catskills' oldest documented family histories.
+        </div>
+      </article>
+
+      <!-- 10. YESTERDAY TO TODAY -->
+      <article id="page-yesterday-today" class="page-section">
+        <h2 class="entry-title">Yesterday to Today</h2>
+        <p>Today, Grand Gorge is served by two major New York State Highways: <strong>Route 23</strong> and <strong>Route 30</strong>. In days gone by, Route 23 was a private toll road called the <strong>Susquehannah Turnpike</strong>, where travelers paid modest tolls at timber gates to cross the mountains.</p>
+        <p>While stagecoaches, tollgates, and steam locomotives have given way to modern highways, Grand Gorge retains the close-knit character of a traditional Catskill crossroads—where neighbors greet each other at the post office, local diners, and community events.</p>
+      </article>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="widget">
+        <h3 class="widget-title"></h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px;">.</p>
+        
+      </div>
+
+      <div class="widget">
+        <h3 class="widget-title">Quick Navigation</h3>
+        <ul>
+          <li><a href="#home" onclick="navigateTo('home'); return false;">Home</a></li>
+          <li><a href="#business" onclick="navigateTo('business'); return false;">Business Directory</a></li>
+          <li><a href="#ggcag" onclick="navigateTo('ggcag'); return false;">GGCAG Community Action</a></li>
+          <li><a href="#history" onclick="navigateTo('history'); return false;">Local History</a></li>
+          <li><a href="#crossroads" onclick="navigateTo('crossroads'); return false;">The Crossroads (Rts 23 &amp; 30)</a></li>
+          <li><a href="#churches" onclick="navigateTo('churches'); return false;">Churches</a></li>
+          <li><a href="#railroad" onclick="navigateTo('railroad'); return false;">Ulster &amp; Delaware RR</a></li>
+          <li><a href="#around-town" onclick="navigateTo('around-town'); return false;">Around Town</a></li>
+          <li><a href="#john-more" onclick="navigateTo('john-more'); return false;">John More (1786)</a></li>
+          <li><a href="#yesterday-today" onclick="navigateTo('yesterday-today'); return false;">Yesterday to Today</a></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h3 class="widget-title">Community Quick Facts</h3>
+        <ul>
+          <li><strong>ZIP Code:</strong> 12434</li>
+          <li><strong>Township:</strong> Town of Roxbury</li>
+          <li><strong>County:</strong> Delaware County, NY</li>
+          <li><strong>Highways:</strong> NYS Rt. 23 &amp; NYS Rt. 30</li>
+          <li><strong>Senior Dining:</strong> Civic Center (11:30 AM)</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>© 2025 Grand Gorge New York • Built with GeneratePress (Recreated Archive Edition)</div>
+      <div>Grand Gorge, NY 12434 • Town of Roxbury</div>
+    </div>
+  </footer>
+
+  <script>
+    function navigateTo(pageId) {
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      const target = document.getElementById('page-' + pageId);
+      if (target) {
+        target.classList.add('active');
+      }
+
+      document.querySelectorAll('#primaryMenu button').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-page') === pageId);
+      });
+
+      const menu = document.getElementById('primaryMenu');
+      if (menu.classList.contains('open')) {
+        menu.classList.remove('open');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('#primaryMenu button').forEach(button => {
+      button.addEventListener('click', () => {
+        navigateTo(button.getAttribute('data-page'));
+      });
+    });
+
+    document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+      const menu = document.getElementById('primaryMenu');
+      const isOpen = menu.classList.toggle('open');
+      this.setAttribute('aria-expanded', isOpen);
+    });
+
+    function filterBusinesses() {
+      const query = document.getElementById('bizFilter').value.toLowerCase();
+      document.querySelectorAll('.biz-category').forEach(category => {
+        let visibleCount = 0;
+        const items = category.querySelectorAll('.biz-item');
+        items.forEach(item => {
+          const match = item.textContent.toLowerCase().includes(query);
+          item.style.display = match ? 'block' : 'none';
+          if (match) visibleCount++;
+        });
+        category.style.display = visibleCount > 0 ? 'block' : 'none';
+      });
+    }
+
+    function downloadSite() {
+      const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'grandgorgeny-archive-20251205.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
